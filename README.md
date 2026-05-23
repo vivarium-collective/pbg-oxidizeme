@@ -1,5 +1,13 @@
 # pbg-oxidizeme
 
+> 🔬 **[View the interactive demo report →](https://vivarium-collective.github.io/pbg-oxidizeme/)**
+>
+> Three live iML1515 FBA configurations (aerobic, O₂-limited, glucose-limited)
+> overlaid with 6 reactors of real Beulig 2025 fermentation trajectories
+> (OD, glucose, μ, OTR, feed-rate, byproducts), plus the composite
+> architecture, the cell-side interface contract surface, and a panel
+> explaining what OxidizeME adds on top of iML1515.
+
 A process-bigraph wrapper for **OxidizeME** — a genome-scale model of
 *Escherichia coli* metabolism + macromolecular expression (ME-model) with
 reactive-oxygen-species damage and repair reactions, published by Yang et al.
