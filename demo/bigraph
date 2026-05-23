@@ -2,27 +2,27 @@ digraph bigraph {
 	dpi=150 overlap=false rankdir=LR splines=true
 	node [constraint=false fontsize="12pt" margin=0.005000000000000001 penwidth=2 shape=circle]
 	node [constraint=false fontsize="12pt" margin=0.005000000000000001 penwidth=2 shape=circle]
-	"('stores', 'atpm')" [label=<atpm>]
-	node [constraint=false fontsize="12pt" margin=0.005000000000000001 penwidth=2 shape=circle]
-	"('stores', 'metal_concentrations')" [label=<metal_concentrations>]
-	node [constraint=false fontsize="12pt" margin=0.005000000000000001 penwidth=2 shape=circle]
-	"('stores', 'mu_fixed')" [label=<mu_fixed>]
+	"('stores', 'ros_concentrations')" [label=<ros_concentrations>]
 	node [constraint=false fontsize="12pt" margin=0.005000000000000001 penwidth=2 shape=circle]
 	"('stores', 'external_concentrations')" [label=<external_concentrations>]
 	node [constraint=false fontsize="12pt" margin=0.005000000000000001 penwidth=2 shape=circle]
-	"('stores', 'ros_concentrations')" [label=<ros_concentrations>]
+	"('stores', 'mu_fixed')" [label=<mu_fixed>]
+	node [constraint=false fontsize="12pt" margin=0.005000000000000001 penwidth=2 shape=circle]
+	"('stores', 'metal_concentrations')" [label=<metal_concentrations>]
+	node [constraint=false fontsize="12pt" margin=0.005000000000000001 penwidth=2 shape=circle]
+	"('stores', 'atpm')" [label=<atpm>]
 	node [constraint=false fontsize="12pt" margin=0.005000000000000001 penwidth=2 shape=circle]
 	"('stores', 'solver_status')" [label=<solver_status>]
 	node [constraint=false fontsize="12pt" margin=0.005000000000000001 penwidth=2 shape=circle]
 	"('stores', 'damaged_proteome')" [label=<damaged_proteome>]
 	node [constraint=false fontsize="12pt" margin=0.005000000000000001 penwidth=2 shape=circle]
-	"('stores', 'wall_time_s')" [label=<wall_time_s>]
-	node [constraint=false fontsize="12pt" margin=0.005000000000000001 penwidth=2 shape=circle]
-	"('stores', 'proteome_allocations')" [label=<proteome_allocations>]
-	node [constraint=false fontsize="12pt" margin=0.005000000000000001 penwidth=2 shape=circle]
 	"('stores', 'exchange_fluxes')" [label=<exchange_fluxes>]
 	node [constraint=false fontsize="12pt" margin=0.005000000000000001 penwidth=2 shape=circle]
+	"('stores', 'wall_time_s')" [label=<wall_time_s>]
+	node [constraint=false fontsize="12pt" margin=0.005000000000000001 penwidth=2 shape=circle]
 	"('stores', 'mu')" [label=<mu>]
+	node [constraint=false fontsize="12pt" margin=0.005000000000000001 penwidth=2 shape=circle]
+	"('stores', 'proteome_allocations')" [label=<proteome_allocations>]
 	node [constraint=false fontsize="12pt" margin=0.005000000000000001 penwidth=2 shape=circle]
 	"('stores',)" [label=<stores>]
 	node [constraint=false fontsize="12pt" margin=0.005000000000000001 penwidth=2 shape=circle]
@@ -63,27 +63,27 @@ digraph bigraph {
 	"('oxidizeme',)" [label=<oxidizeme>]
 	"('emitter',)" [label=<emitter>]
 	edge [style=filled]
-	"('stores',)" -> "('stores', 'atpm')" [arrowhead=none constraint=true penwidth=2]
-	edge [style=filled]
-	"('stores',)" -> "('stores', 'metal_concentrations')" [arrowhead=none constraint=true penwidth=2]
-	edge [style=filled]
-	"('stores',)" -> "('stores', 'mu_fixed')" [arrowhead=none constraint=true penwidth=2]
+	"('stores',)" -> "('stores', 'ros_concentrations')" [arrowhead=none constraint=true penwidth=2]
 	edge [style=filled]
 	"('stores',)" -> "('stores', 'external_concentrations')" [arrowhead=none constraint=true penwidth=2]
 	edge [style=filled]
-	"('stores',)" -> "('stores', 'ros_concentrations')" [arrowhead=none constraint=true penwidth=2]
+	"('stores',)" -> "('stores', 'mu_fixed')" [arrowhead=none constraint=true penwidth=2]
+	edge [style=filled]
+	"('stores',)" -> "('stores', 'metal_concentrations')" [arrowhead=none constraint=true penwidth=2]
+	edge [style=filled]
+	"('stores',)" -> "('stores', 'atpm')" [arrowhead=none constraint=true penwidth=2]
 	edge [style=filled]
 	"('stores',)" -> "('stores', 'solver_status')" [arrowhead=none constraint=true penwidth=2]
 	edge [style=filled]
 	"('stores',)" -> "('stores', 'damaged_proteome')" [arrowhead=none constraint=true penwidth=2]
 	edge [style=filled]
-	"('stores',)" -> "('stores', 'wall_time_s')" [arrowhead=none constraint=true penwidth=2]
-	edge [style=filled]
-	"('stores',)" -> "('stores', 'proteome_allocations')" [arrowhead=none constraint=true penwidth=2]
-	edge [style=filled]
 	"('stores',)" -> "('stores', 'exchange_fluxes')" [arrowhead=none constraint=true penwidth=2]
 	edge [style=filled]
+	"('stores',)" -> "('stores', 'wall_time_s')" [arrowhead=none constraint=true penwidth=2]
+	edge [style=filled]
 	"('stores',)" -> "('stores', 'mu')" [arrowhead=none constraint=true penwidth=2]
+	edge [style=filled]
+	"('stores',)" -> "('stores', 'proteome_allocations')" [arrowhead=none constraint=true penwidth=2]
 	edge [style=filled]
 	"('stores', 'external_concentrations')" -> "('stores', 'external_concentrations', 'GLC[p]')" [arrowhead=none constraint=true penwidth=2]
 	edge [style=filled]
@@ -102,15 +102,7 @@ digraph bigraph {
 	"('stores', 'metal_concentrations')" -> "('stores', 'metal_concentrations', 'zn2_c')" [arrowhead=none constraint=true penwidth=2]
 	edge [arrowhead=normal arrowsize=1.0 dir=forward penwidth=1 style=dashed]
 	subgraph "('oxidizeme',)" {
-		"('stores', 'atpm')" -> "('oxidizeme',)" [label="" constraint=true fontsize="10pt" labelloc=t]
-	}
-	edge [arrowhead=normal arrowsize=1.0 dir=forward penwidth=1 style=dashed]
-	subgraph "('oxidizeme',)" {
-		"('stores', 'metal_concentrations')" -> "('oxidizeme',)" [label="" constraint=true fontsize="10pt" labelloc=t]
-	}
-	edge [arrowhead=normal arrowsize=1.0 dir=forward penwidth=1 style=dashed]
-	subgraph "('oxidizeme',)" {
-		"('stores', 'mu_fixed')" -> "('oxidizeme',)" [label="" constraint=true fontsize="10pt" labelloc=t]
+		"('stores', 'ros_concentrations')" -> "('oxidizeme',)" [label="" constraint=true fontsize="10pt" labelloc=t]
 	}
 	edge [arrowhead=normal arrowsize=1.0 dir=forward penwidth=1 style=dashed]
 	subgraph "('oxidizeme',)" {
@@ -118,7 +110,15 @@ digraph bigraph {
 	}
 	edge [arrowhead=normal arrowsize=1.0 dir=forward penwidth=1 style=dashed]
 	subgraph "('oxidizeme',)" {
-		"('stores', 'ros_concentrations')" -> "('oxidizeme',)" [label="" constraint=true fontsize="10pt" labelloc=t]
+		"('stores', 'mu_fixed')" -> "('oxidizeme',)" [label="" constraint=true fontsize="10pt" labelloc=t]
+	}
+	edge [arrowhead=normal arrowsize=1.0 dir=forward penwidth=1 style=dashed]
+	subgraph "('oxidizeme',)" {
+		"('stores', 'metal_concentrations')" -> "('oxidizeme',)" [label="" constraint=true fontsize="10pt" labelloc=t]
+	}
+	edge [arrowhead=normal arrowsize=1.0 dir=forward penwidth=1 style=dashed]
+	subgraph "('oxidizeme',)" {
+		"('stores', 'atpm')" -> "('oxidizeme',)" [label="" constraint=true fontsize="10pt" labelloc=t]
 	}
 	edge [arrowhead=normal arrowsize=1.0 dir=forward penwidth=1 style=dashed]
 	subgraph "('emitter',)" {
@@ -126,7 +126,15 @@ digraph bigraph {
 	}
 	edge [arrowhead=normal arrowsize=1.0 dir=forward penwidth=1 style=dashed]
 	subgraph "('emitter',)" {
+		"('stores', 'damaged_proteome')" -> "('emitter',)" [label="" constraint=true fontsize="10pt" labelloc=t]
+	}
+	edge [arrowhead=normal arrowsize=1.0 dir=forward penwidth=1 style=dashed]
+	subgraph "('emitter',)" {
 		"('stores', 'wall_time_s')" -> "('emitter',)" [label="" constraint=true fontsize="10pt" labelloc=t]
+	}
+	edge [arrowhead=normal arrowsize=1.0 dir=forward penwidth=1 style=dashed]
+	subgraph "('emitter',)" {
+		"('stores', 'mu')" -> "('emitter',)" [label="" constraint=true fontsize="10pt" labelloc=t]
 	}
 	edge [arrowhead=normal arrowsize=1.0 dir=forward penwidth=1 style=dashed]
 	subgraph "('emitter',)" {
@@ -134,15 +142,7 @@ digraph bigraph {
 	}
 	edge [arrowhead=normal arrowsize=1.0 dir=forward penwidth=1 style=dashed]
 	subgraph "('emitter',)" {
-		"('stores', 'damaged_proteome')" -> "('emitter',)" [label="" constraint=true fontsize="10pt" labelloc=t]
-	}
-	edge [arrowhead=normal arrowsize=1.0 dir=forward penwidth=1 style=dashed]
-	subgraph "('emitter',)" {
 		"('stores', 'exchange_fluxes')" -> "('emitter',)" [label="" constraint=true fontsize="10pt" labelloc=t]
-	}
-	edge [arrowhead=normal arrowsize=1.0 dir=forward penwidth=1 style=dashed]
-	subgraph "('emitter',)" {
-		"('stores', 'mu')" -> "('emitter',)" [label="" constraint=true fontsize="10pt" labelloc=t]
 	}
 	edge [arrowhead=normal arrowsize=1.0 dir=back penwidth=1 style=dashed]
 	subgraph "('oxidizeme',)" {
@@ -154,18 +154,18 @@ digraph bigraph {
 	}
 	edge [arrowhead=normal arrowsize=1.0 dir=back penwidth=1 style=dashed]
 	subgraph "('oxidizeme',)" {
-		"('stores', 'wall_time_s')" -> "('oxidizeme',)" [label="" constraint=true fontsize="10pt" labelloc=t]
-	}
-	edge [arrowhead=normal arrowsize=1.0 dir=back penwidth=1 style=dashed]
-	subgraph "('oxidizeme',)" {
-		"('stores', 'proteome_allocations')" -> "('oxidizeme',)" [label="" constraint=true fontsize="10pt" labelloc=t]
-	}
-	edge [arrowhead=normal arrowsize=1.0 dir=back penwidth=1 style=dashed]
-	subgraph "('oxidizeme',)" {
 		"('stores', 'exchange_fluxes')" -> "('oxidizeme',)" [label="" constraint=true fontsize="10pt" labelloc=t]
 	}
 	edge [arrowhead=normal arrowsize=1.0 dir=back penwidth=1 style=dashed]
 	subgraph "('oxidizeme',)" {
+		"('stores', 'wall_time_s')" -> "('oxidizeme',)" [label="" constraint=true fontsize="10pt" labelloc=t]
+	}
+	edge [arrowhead=normal arrowsize=1.0 dir=back penwidth=1 style=dashed]
+	subgraph "('oxidizeme',)" {
 		"('stores', 'mu')" -> "('oxidizeme',)" [label="" constraint=true fontsize="10pt" labelloc=t]
+	}
+	edge [arrowhead=normal arrowsize=1.0 dir=back penwidth=1 style=dashed]
+	subgraph "('oxidizeme',)" {
+		"('stores', 'proteome_allocations')" -> "('oxidizeme',)" [label="" constraint=true fontsize="10pt" labelloc=t]
 	}
 }
