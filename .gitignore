@@ -1,0 +1,24 @@
+.venv/
+__pycache__/
+*.egg-info/
+dist/
+build/
+*.pyc
+.pytest_cache/
+demo/*.png
+output/
+*.nc
+.idea/
+.DS_Store
+.pbg/
+
+
+# Added by pbg-superpowers in-place scaffolder
+.pbg/*
+!.pbg/schemas/
+investigations/*/runs.db
+investigations/*/viz/
+investigations/*/.run.lock
+reports/assets/*
+!reports/assets/.keep
+.superpowers/brainstorm/

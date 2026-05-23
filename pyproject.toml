@@ -1,0 +1,56 @@
+[build-system]
+requires = ["hatchling>=1.18"]
+build-backend = "hatchling.build"
+
+[project]
+name = "pbg-oxidizeme"
+version = "0.1.0"
+description = "Process-bigraph wrapper for OxidizeME — a genome-scale ME-model of E. coli with ROS damage/repair (Yang et al. 2019 PNAS / Palsson lab)"
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.10"
+authors = [{name = "vivarium-collective", email = "noreply@anthropic.com"}]
+classifiers = [
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Topic :: Scientific/Engineering :: Bio-Informatics",
+]
+dependencies = [
+    "bigraph-schema>=0.0.60",
+    "process-bigraph>=0.0.66",
+    # NOTE: oxidizeme / cobrame / ecolime / solvemepy / qminospy are
+    # ENVIRONMENTAL dependencies — they require Python 2.7 / cobrapy 0.5.11
+    # at the time of writing, and qMINOS is a proprietary solver obtained
+    # by contacting Prof. M. A. Saunders at Stanford. They are NOT listed
+    # here. The Process bridge imports them lazily and raises a clear
+    # RuntimeError when they are not available. See README "Real bridge —
+    # install obstacle" for installation paths (Docker, qMINOS, SoPlex).
+    "bigraph-viz>=2.0.3",
+    "pyyaml>=6.0",
+    "jsonschema[format-nongpl]>=4.21",
+    "jinja2>=3.1",
+    "pypdf>=4.0",
+    "matplotlib",
+    "plotly",
+    "vivarium-dashboard",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "matplotlib",
+    "plotly",
+    "bigraph-viz",
+]
+
+[project.urls]
+Homepage = "https://github.com/vivarium-collective/pbg-oxidizeme"
+Issues = "https://github.com/vivarium-collective/pbg-oxidizeme/issues"
+Upstream-OxidizeME = "https://github.com/SBRG/oxidizeme"
+Upstream-COBRAme = "https://github.com/SBRG/cobrame"
+
+[tool.hatch.build.targets.wheel]
+packages = ["pbg_oxidizeme"]
+
+[tool.uv.sources]
+vivarium-dashboard = { path = "/Users/eranagmon/code/vivarium-dashboard", editable = true }
