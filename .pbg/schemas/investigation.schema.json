@@ -1,0 +1,84 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "investigation.yaml",
+  "description": "A named collection of Studies grouped under a shared research question, with an explicit cross-study dependency DAG and top-level acceptance criteria.",
+  "type": "object",
+  "additionalProperties": true,
+  "required": ["name", "title"],
+  "properties": {
+    "schema_version": {
+      "type": "integer",
+      "description": "Schema version. Current: 1.",
+      "const": 1
+    },
+    "name": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9_-]*$",
+      "description": "URL-safe slug that matches the directory name under investigations/."
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Human-readable title for the investigation."
+    },
+    "created": {
+      "type": "string",
+      "format": "date",
+      "description": "ISO-8601 creation date (YYYY-MM-DD)."
+    },
+    "status": {
+      "enum": ["planned", "planning", "running", "ran", "complete", "failed", "invalid", "archived"],
+      "description": "Overall status of the investigation. 'planning' is accepted as an alias for 'planned' for back-compat."
+    },
+    "question": {
+      "type": "string",
+      "description": "The overarching research question answered by running all member studies in concert."
+    },
+    "hypothesis": {
+      "type": "string",
+      "description": "Predicted outcome across the full study sequence."
+    },
+    "description": {
+      "type": "string",
+      "description": "Markdown narrative: background, mechanism, study sequence, expected outcome."
+    },
+    "studies": {
+      "type": "array",
+      "description": "Ordered list of study slugs that belong to this investigation. Controls dashboard grouping/visibility. The DAG topology is derived from each study's own parent_studies field.",
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z0-9][a-z0-9_-]*$"
+      },
+      "uniqueItems": true
+    },
+    "expert_docs": {
+      "type": "array",
+      "description": "Names of expert_docs entries from workspace.yaml that are relevant to this investigation (cross-reference convenience, not authoritative).",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "acceptance_criteria": {
+      "type": "array",
+      "description": "Top-level success criteria for the investigation. Each entry maps to a specific expected_behavior[i].name on a member study. The investigation is 'complete' when all entries pass.",
+      "items": {
+        "type": "object",
+        "additionalProperties": true,
+        "required": ["study", "behavior"],
+        "properties": {
+          "study": {
+            "type": "string",
+            "pattern": "^[a-z0-9][a-z0-9_-]*$",
+            "description": "Slug of the member study that owns this criterion."
+          },
+          "behavior": {
+            "type": "string",
+            "minLength": 1,
+            "description": "The expected_behavior[i].name value on the named study."
+          }
+        }
+      }
+    }
+  }
+}
