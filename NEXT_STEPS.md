@@ -154,3 +154,62 @@ Skills in Claude Code can `open <url>` to surface a focused interaction without 
 
 [discovery]: https://github.com/vivarium-collective/pbg-superpowers/blob/main/docs/conventions/discovery.md
 [pbg-superpowers]: https://github.com/vivarium-collective/pbg-superpowers
+
+---
+
+## pbg-oxidizeme — wrapper-specific next steps
+
+These are the open items SPECIFIC to this wrapper (above is generic
+workspace onboarding from the pbg-template scaffolder).
+
+### 1. Get the upstream stack running (the install obstacle)
+
+Without this, only the shape-tests + non-strict scaffolding work. With it,
+the real-bridge solve test (`tests/test_processes.py::test_real_bridge_solve`)
+becomes the canonical correctness check. Options, in order of decreasing
+recommendation:
+
+- **Pull SBRG's Docker image** (`docker pull sbrg/cobrame`) and supply a
+  pickled `StressME` model via the `OXIDIZEME_PICKLE` env var.
+- **Build from sources**: clone SBRG/cobrame, SBRG/ecolime, SBRG/oxidizeme,
+  SBRG/solvemepy into a Python 2.7 venv with cobrapy 0.5.11.
+- **Request qMINOS** from Prof. M. A. Saunders at Stanford University.
+- **Use SoPlex** (academic-free, 80-bit) as a qMINOS alternative if qMINOS
+  request is delayed.
+
+### 2. Calibrate the exchange-bound mapping
+
+`OxidizeMEStep._apply_exchange_bounds` is a placeholder Monod-style soft
+cap with literature-anchored v_max defaults. The v2ecoli mbp investigation
+(specifically the spec PR for mbp-03-bird-reactor-coupling, when it wires
+OxidizeME as a comparator engine in mbp-06) should replace this with a
+per-substrate calibrated form. Track via a config field
+`exchange_bound_calibration: map[string, {v_max: float, K_half_mM: float}]`.
+
+### 3. Replace the proteome-allocation classifier
+
+`_compute_proteome_allocations` groups translation fluxes by keyword match
+on linked reaction IDs (PGI, FBA, …). Beulig 2025 uses curated pathway
+membership + iModulon assignments — load those via a `pathway_membership`
+config map or via the supplementary data in
+`v2ecoli/references/papers/palsson-2025-supp/`.
+
+### 4. Pickle a default StressME model
+
+Ship (or document a one-line build script for) a default pickled
+`StressME` model so the demo can exercise the real bridge without manual
+ecolime building.
+
+### 5. Wire into the v2ecoli mbp-06 gap-analysis study
+
+Once the real-bridge solve works for at least one configuration, register
+pbg-oxidizeme in `references/expert/cell_side_interface_contract.md` of
+the v2ecoli `multiscale-bioprocess` investigation under "Engines tracked
+under this contract", and open a candidate-future-study scaffold for a
+v2ecoli-vs-OxidizeME comparator under the same reactor composite.
+
+### 6. Modern Python 3 port (long-term)
+
+The upstream cobrame `devel` branch claims a Python 3 port. Validating
+that branch + repinning OxidizeME / ecolime against it would dissolve
+most of the "install obstacle" friction.
