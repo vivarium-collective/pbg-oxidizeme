@@ -52,5 +52,9 @@ Upstream-COBRAme = "https://github.com/SBRG/cobrame"
 [tool.hatch.build.targets.wheel]
 packages = ["pbg_oxidizeme"]
 
+# vivarium-dashboard isn't on PyPI; pin it to its public git repo so this
+# resolves in CI and on any clone (no local laptop path). For local dashboard
+# development, override with an editable install in your venv instead:
+#     uv pip install -e ../vivarium-dashboard
 [tool.uv.sources]
-vivarium-dashboard = { path = "/Users/eranagmon/code/vivarium-dashboard", editable = true }
+vivarium-dashboard = { git = "https://github.com/vivarium-collective/vivarium-dashboard.git", branch = "main" }
