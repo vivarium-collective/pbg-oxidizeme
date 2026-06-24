@@ -10,12 +10,15 @@ output/
 *.nc
 .idea/
 .DS_Store
-.pbg/
 
 
 # Added by pbg-superpowers in-place scaffolder
+# Ignore .pbg runtime state but keep the committed workspace schema(s). The
+# blanket `.pbg/` was removed so this negation can take effect (git won't
+# re-include a path whose parent directory is excluded).
 .pbg/*
 !.pbg/schemas/
+!.pbg/schemas/**
 investigations/*/runs.db
 investigations/*/viz/
 investigations/*/.run.lock
