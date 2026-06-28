@@ -48,10 +48,7 @@ REPORT_PATH = OUT_DIR / "report.html"
 # Beulig 2025 supplementary data — already mirrored into the v2ecoli mbp
 # investigation. Use a configurable path so this demo runs even when the
 # v2ecoli checkout isn't where we expect.
-DEFAULT_BEULIG_DIR = Path(
-    "/Users/eranagmon/code/v2ecoli/.pbg/worktrees/multiscale-bioprocess/"
-    "references/papers/palsson-2025-supp"
-)
+DEFAULT_BEULIG_DIR = REPO_ROOT / "references" / "papers" / "palsson-2025-supp"
 BEULIG_DIR = Path(os.environ.get("BEULIG_SUPP", str(DEFAULT_BEULIG_DIR)))
 
 

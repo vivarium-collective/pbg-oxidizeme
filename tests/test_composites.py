@@ -47,10 +47,17 @@ def test_composite_assembles_in_non_strict_mode():
     end-to-end on the generated document. Non-strict so the wrapper doesn't
     need OxidizeME installed.
     """
+    from pbg_oxidizeme import OxidizeMEStep
     from pbg_oxidizeme.composites import oxidizeme_steady_state
     from process_bigraph import Composite, allocate_core
 
     core = allocate_core()
+    # The generated document wires the process by its `local:OxidizeMEStep`
+    # address, resolved from the core's link registry. In a dashboard the
+    # workspace's processes are discovered/registered for us; in an isolated
+    # test venv they are not, so register defensively (idempotent — a dict
+    # assignment) before assembling the Composite.
+    core.register_link("OxidizeMEStep", OxidizeMEStep)
     doc = oxidizeme_steady_state(core=core, strict=False)
     sim = Composite({"state": doc}, core=core)
     assert sim is not None

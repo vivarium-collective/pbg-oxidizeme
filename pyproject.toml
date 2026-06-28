@@ -8,7 +8,7 @@ version = "0.1.0"
 description = "Process-bigraph wrapper for OxidizeME — a genome-scale ME-model of E. coli with ROS damage/repair (Yang et al. 2019 PNAS / Palsson lab)"
 readme = "README.md"
 license = {text = "MIT"}
-requires-python = ">=3.10"
+requires-python = ">=3.11"
 authors = [{name = "vivarium-collective", email = "noreply@anthropic.com"}]
 classifiers = [
     "License :: OSI Approved :: MIT License",
@@ -52,5 +52,9 @@ Upstream-COBRAme = "https://github.com/SBRG/cobrame"
 [tool.hatch.build.targets.wheel]
 packages = ["pbg_oxidizeme"]
 
+# vivarium-dashboard isn't on PyPI; pin it to its public git repo so this
+# resolves in CI and on any clone (no local laptop path). For local dashboard
+# development, override with an editable install in your venv instead:
+#     uv pip install -e ../vivarium-dashboard
 [tool.uv.sources]
-vivarium-dashboard = { path = "/Users/eranagmon/code/vivarium-dashboard", editable = true }
+vivarium-dashboard = { git = "https://github.com/vivarium-collective/vivarium-dashboard.git", branch = "main" }

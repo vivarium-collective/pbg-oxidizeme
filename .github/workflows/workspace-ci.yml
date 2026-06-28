@@ -4,11 +4,9 @@ on: [push, pull_request]
 # CI for a workspace scaffolded from pbg-template.
 #
 # Sequence:
-#   1. Check out the workspace (no submodules — workspace tests don't need them,
-#      and recursive init breaks when an external/* submodule contains its own
-#      orphaned gitlinks that aren't declared in its .gitmodules).
-#   2. Best-effort init of external/* submodules (one level deep, never recursive).
-#      Failures here are non-fatal — the workspace tests should run regardless.
+#   1. Check out the workspace.
+#   2. Guard against local laptop paths (file:///, /Users/, /home/) leaking
+#      into committed config — fail fast with a clear message.
 #   3. Set up venv + install workspace deps editably.
 #   4. Lint workspace.yaml against the JSON schema.
 #   5. Run pytest at the workspace root (if any test files exist).
@@ -24,16 +22,8 @@ jobs:
       - uses: actions/checkout@v6
         with:
           submodules: false
-      - name: Init external submodules (best-effort, non-recursive)
-        run: |
-          # Default `git submodule update` is non-recursive — omit --recursive
-          # to avoid descending into a sub-module's submodules (which can have
-          # orphan gitlinks like v2ecoli's .claude/worktrees/*). Failures here
-          # are tolerated — workspace tests don't strictly need every external.
-          # NOTE: --no-recursive is NOT a real flag; just omit --recursive.
-          git submodule update --init external/ 2>&1 || true
-          echo "--- external/ contents ---"
-          ls -la external/ 2>&1 || true
+      - name: Guard against local absolute paths
+        run: bash scripts/check-no-local-paths.sh
       - uses: actions/setup-python@v6
         with:
           python-version: "3.11"
