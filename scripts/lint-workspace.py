@@ -257,12 +257,12 @@ def main() -> None:
         except Exception:
             pass
 
-    # Try to import vivarium_dashboard for dashboard-equivalent validation.
+    # Try to import vivarium_workbench for dashboard-equivalent validation.
     _dashboard_load_spec = None
     _dashboard_spec_error = None
     _dashboard_importable = False
     try:
-        from vivarium_dashboard.lib.investigations import (  # type: ignore[import]
+        from vivarium_workbench.lib.investigations import (  # type: ignore[import]
             load_spec as _dashboard_load_spec,
             InvestigationSpecError as _dashboard_spec_error,
         )
@@ -451,7 +451,7 @@ def main() -> None:
     # them is exactly the bug.
     schema_check = "schema ✓" if study_schema is not None else "schema skipped"
     if not _dashboard_importable:
-        dashboard_check = "dashboard skipped — install vivarium-dashboard"
+        dashboard_check = "dashboard skipped — install vivarium-workbench"
     elif n_studies_failed_dashboard > 0:
         dashboard_check = f"dashboard ✗ ({n_studies_failed_dashboard} failing)"
     else:
@@ -482,7 +482,7 @@ def main() -> None:
 
     if not _dashboard_importable and n_studies > 0:
         print(
-            "  (vivarium-dashboard not importable; dashboard-equivalent validation skipped)",
+            "  (vivarium-workbench not importable; dashboard-equivalent validation skipped)",
             file=sys.stderr,
         )
 
