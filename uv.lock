@@ -1201,12 +1201,11 @@ provides-extras = ["dev"]
 
 [[package]]
 name = "pbg-superpowers"
-version = "0.15.0"
+version = "0.16.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "bigraph-schema" },
     { name = "click" },
-    { name = "investigation-contracts" },
     { name = "jinja2" },
     { name = "jsonschema", extra = ["format-nongpl"] },
     { name = "pbg-emitters" },
@@ -1215,9 +1214,9 @@ dependencies = [
     { name = "pyyaml" },
     { name = "ruamel-yaml" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/71/2c/2bf08066c3d6f654157d97b183ccde309f5766aa5eeef2c6ac7f6cf0d442/pbg_superpowers-0.15.0.tar.gz", hash = "sha256:3f021831664f6bf8c91b03b9cb944a66420c94417182892e79b37a4649077916", size = 1399515, upload-time = "2026-06-29T12:50:26.68Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/b4/c7/539d3dfa46a896370c8ba6a4b71a8c67f5cb523cb01d8fe0aa9e122cdde5/pbg_superpowers-0.16.0.tar.gz", hash = "sha256:29586e3af2b732934717c485931480bd4e33613a07543f3077d83c13d5d7213b", size = 1413823, upload-time = "2026-07-25T20:38:24.505Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/96/61/8577ee63f15ec93cf01efe7e5ffebbce1cbb0da25c54d0c60d50ffdfeaf2/pbg_superpowers-0.15.0-py3-none-any.whl", hash = "sha256:0be046e1a2528c7cd28d5f8e4db21586a4c89b2f8b54f5af3ebe8ddb5174e6e7", size = 355048, upload-time = "2026-06-29T12:50:25.206Z" },
+    { url = "https://files.pythonhosted.org/packages/4b/92/84914100888dba584150e743cd35ab23332ce4ecd58f6bdfeccb9371abb8/pbg_superpowers-0.16.0-py3-none-any.whl", hash = "sha256:5bc54398d2f0313f1d734e989f85b78c3e5b3d825e9582fbc41d709dfbedbcc7", size = 362202, upload-time = "2026-07-25T20:38:22.915Z" },
 ]
 
 [[package]]

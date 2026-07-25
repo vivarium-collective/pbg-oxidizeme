@@ -15,7 +15,7 @@ def test_generator_is_registered():
     # Importing the package's composites subpackage runs the @composite_generator
     # decorator side effect — this is the documented "import to register" pattern.
     import pbg_oxidizeme.composites  # noqa: F401
-    from pbg_superpowers.composite_generator import _REGISTRY
+    from viva_superpowers.composite_generator import _REGISTRY
 
     matches = [eid for eid in _REGISTRY if eid.endswith(".oxidizeme_steady_state")]
     assert matches, f"oxidizeme_steady_state missing; have {sorted(_REGISTRY)[:8]}"
