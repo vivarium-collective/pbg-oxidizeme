@@ -12,7 +12,7 @@ tick and reads back μ + exchange_fluxes. See the v2ecoli multiscale-bioprocess
 investigation (mbp-03-bird-reactor-coupling) for a worked example.
 """
 
-from pbg_superpowers.composite_generator import composite_generator
+from viva_superpowers.composite_generator import composite_generator
 
 
 @composite_generator(
