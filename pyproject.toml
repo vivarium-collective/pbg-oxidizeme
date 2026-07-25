@@ -55,6 +55,6 @@ packages = ["pbg_oxidizeme"]
 # vivarium-workbench isn't on PyPI; pin it to its public git repo so this
 # resolves in CI and on any clone (no local laptop path). For local dashboard
 # development, override with an editable install in your venv instead:
-#     uv pip install -e ../vivarium-dashboard
+#     uv pip install -e ../vivarium-workbench
 [tool.uv.sources]
-vivarium-workbench = { git = "https://github.com/vivarium-collective/vivarium-dashboard.git", branch = "main" }
+vivarium-workbench = { git = "https://github.com/vivarium-collective/vivarium-workbench.git", branch = "main" }
